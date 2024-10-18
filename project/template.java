@@ -17,12 +17,12 @@ public class template
           String architectureOS = "os.arch";
           double memory = Runtime.getRuntime().totalMemory() / 1000000;
 
-          System.out.println("CPU " + cpu.getModel() + " has "+ cpu.coreCount() + " cores");
+          //System.out.println("CPU " + cpu.getModel() + " has "+ cpu.coreCount() + " cores");
           System.out.println("\nTotal memory available to JVM (Megabytes): " + memory );
           System.out.println("\nOS: \t" + System.getProperty(nameOS));
           System.out.println("OS Version: \t" + System.getProperty(versionOS));
           System.out.println("OS Architecture: \t" + System.getProperty(architectureOS));
-          System.out.println(info);
+          //System.out.println(info);
 
           
      }
