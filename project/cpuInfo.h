@@ -10,9 +10,17 @@ extern "C" {
 /*
  * Class:     cpuInfo
  * Method:    read
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_cpuInfo_read__I
+  (JNIEnv *, jobject, jint);
+
+/*
+ * Class:     cpuInfo
+ * Method:    read
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_cpuInfo_read
+JNIEXPORT void JNICALL Java_cpuInfo_read__
   (JNIEnv *, jobject);
 
 /*
