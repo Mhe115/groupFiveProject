@@ -55,8 +55,8 @@ public class template
 
           
           System.out.println("\nTotal memory available to JVM (Megabytes): " + memory );
-          System.out.println("\nOS: \t" + System.getProperty(nameOS));
-          System.out.println("OS Version: \t" + System.getProperty(versionOS));
+          System.out.println("\nOS: \t\t\t" + System.getProperty(nameOS));
+          System.out.println("OS Version: \t\t" + System.getProperty(versionOS));
           System.out.println("OS Architecture: \t" + System.getProperty(architectureOS));
           System.out.println();
           
