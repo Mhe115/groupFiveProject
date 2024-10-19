@@ -82,15 +82,21 @@ public class template extends JFrame{
         System.out.println("core 1 idle="+cpu.getIdleTime(1)+"%");
     }
 
-    /*public static void memoryInfo(){
+    public static void showMEM(){
+
+          String nameOS = "os.name";  
+          String versionOS = "os.version";  
+          String architectureOS = "os.arch";
+          double memory = Runtime.getRuntime().totalMemory() / 1000000;
+
           System.out.println("\nTotal memory available to JVM (Megabytes): " + memory );
           System.out.println("\nOS: \t\t\t" + System.getProperty(nameOS));
           System.out.println("OS Version: \t\t" + System.getProperty(versionOS));
           System.out.println("OS Architecture: \t" + System.getProperty(architectureOS));
           System.out.println();
           System.out.println("CPU Memory info");          
-          System.out.println("l1d="+cpu.l1dCacheSize()+ ", l1i="+cpu.l1iCacheSize()+ ", l2="+cpu.l2CacheSize()+ ", l3="+cpu.l3CacheSize());
-    }*/
+          //System.out.println("l1d="+cpu.l1dCacheSize()+ ", l1i="+cpu.l1iCacheSize()+ ", l2="+cpu.l2CacheSize()+ ", l3="+cpu.l3CacheSize());
+    }
 
 
 
@@ -183,6 +189,7 @@ public class template extends JFrame{
         cpuInfo cpu = new cpuInfo();
         cpu.read(0);
 
+        showMEM();
         //showCPU();
         //showPCI();
         //showUSB();
