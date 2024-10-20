@@ -1,15 +1,21 @@
 // Group Five Project
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+//Import GUI
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import javax.swing.UIManager;
+
 
 public class template extends JFrame{
-    public static void showPCI(){
+
+//Getting the PCI,CPU,USB and MEM Info
+    //PCI Info
+    public static void showPCI(){ try{
         pciInfo pci = new pciInfo();
         pci.read();
 
@@ -23,7 +29,7 @@ public class template extends JFrame{
 
             // Iterate for up to 32 devices.  Not every device slot may be populated
             // so ensure at least one function before printing device information
-            for (int j = 0; j < 32; j++) {
+            for (int j = 0; j < 64; j++) {
                 if (pci.functionCount (i, j) > 0) {
                     System.out.println("Bus "+i+" device "+j+" has "+
                         pci.functionCount(i, j)+" functions");
@@ -39,8 +45,13 @@ public class template extends JFrame{
                 }
             }
         }
+    } catch (Exception e){
+        System.err.println("Failed to get PCI info");
+    }
+    
     }
 
+    //USB Info
     public static void showUSB(){
         usbInfo usb = new usbInfo();
         usb.read();
@@ -82,36 +93,38 @@ public class template extends JFrame{
         System.out.println("core 1 idle="+cpu.getIdleTime(1)+"%");
     }
 
+    //Memory Info
     public static void showMEM(){
+        cpuInfo cpu = new cpuInfo();
+        cpu.read(0);
 
-          String nameOS = "os.name";  
-          String versionOS = "os.version";  
-          String architectureOS = "os.arch";
-          double memory = Runtime.getRuntime().totalMemory() / 1000000;
+        String nameOS = "os.name";  
+        String versionOS = "os.version";  
+        String architectureOS = "os.arch";
+        double memory = Runtime.getRuntime().totalMemory() / 1000000;
 
-          System.out.println("\nTotal memory available to JVM (Megabytes): " + memory );
-          System.out.println("\nOS: \t\t\t" + System.getProperty(nameOS));
-          System.out.println("OS Version: \t\t" + System.getProperty(versionOS));
-          System.out.println("OS Architecture: \t" + System.getProperty(architectureOS));
-          System.out.println();
-          System.out.println("CPU Memory info");          
-          //System.out.println("l1d="+cpu.l1dCacheSize()+ ", l1i="+cpu.l1iCacheSize()+ ", l2="+cpu.l2CacheSize()+ ", l3="+cpu.l3CacheSize());
+        System.out.println("\nTotal memory available to JVM (Megabytes): " + memory );
+        System.out.println("\nOS: \t\t\t" + System.getProperty(nameOS));
+        System.out.println("OS Version: \t\t" + System.getProperty(versionOS));
+        System.out.println("OS Architecture: \t" + System.getProperty(architectureOS));
+        System.out.println();
+        System.out.println("CPU Memory info");          
+        System.out.println("l1d="+cpu.l1dCacheSize()+ ", l1i="+cpu.l1iCacheSize()+ ", l2="+cpu.l2CacheSize()+ ", l3="+cpu.l3CacheSize());
     }
 
 
 
-
-
+//Seting up the GUI
    public template() {
         // Set up the JFrame
             setTitle("Group Five Project");
-            setSize(400, 300);
+            setSize(800, 600);
             setLocationRelativeTo(null);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
 
             createScreenCont();
     }
-
+//Making the main screen content on the GUI
     private void createScreenCont() {
         JPanel panel = new JPanel();
         getContentPane().add(panel);
@@ -137,6 +150,11 @@ public class template extends JFrame{
         panel.add(usbbut);
 
         usbbut.addActionListener(new usbPick());
+
+        JButton membut = new JButton("MEM");
+        panel.add(membut);
+
+        membut.addActionListener(new memPick());
     }
 
     private class cpuPick implements ActionListener {
@@ -144,7 +162,7 @@ public class template extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            System.out.println("CPU Selected");
+            System.out.println("\nCPU Selected");
             showCPU();
         }
     }
@@ -154,7 +172,7 @@ public class template extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            System.out.println("PCI Selected");
+            System.out.println("\nPCI Selected");
             showPCI();
         }
     }
@@ -164,8 +182,18 @@ public class template extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            System.out.println("USB Selected");
+            System.out.println("\nUSB Selected");
             showUSB();
+        }
+    }
+
+    private class memPick implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            System.out.println("\nMEM Selected");
+            showMEM();
         }
     }
 
@@ -182,18 +210,21 @@ public class template extends JFrame{
 
 
 
-
+//main
     public static void main(String[] args){
         System.loadLibrary("sysinfo");
         sysInfo info = new sysInfo();
-        cpuInfo cpu = new cpuInfo();
-        cpu.read(0);
 
-        showMEM();
+
+        //showMEM();
         //showCPU();
         //showPCI();
         //showUSB();
 
+
+
+
+        //Calling the GUI to run
         SwingUtilities.invokeLater(() -> {
             template ex = new template();
             ex.setVisible(true);

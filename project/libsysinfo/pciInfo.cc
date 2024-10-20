@@ -78,7 +78,7 @@ void PCIInfo::_parseDevice (char buffer[])
     // cout << "loc=" << hex << location << ", id=" << ident << endl;
     
     int bus = location >> 8;
-    assert (bus < maxBus);
+    //assert (bus < maxBus);
     int device = (location & 0xf8) >> 3;
     int function = location & 0x7;
     // cout<<"b="<<bus<<",d="<<device<<",f="<<function<<endl;
