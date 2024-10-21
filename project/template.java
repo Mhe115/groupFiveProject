@@ -8,10 +8,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+//JFree Chart Stuff
+
+
 //import javax.swing.UIManager;
 
 
 public class template extends JFrame{
+
+    private JFrame frame;
+    private JPanel panel;
 
 //Making the main screen content on the GUI
 
@@ -24,14 +30,16 @@ public class template extends JFrame{
             setLocationRelativeTo(null);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-            JPanel panel = new JPanel();
+            frame = new JFrame("Refresh JFrame Example");
+            panel = new JPanel();
+
             getContentPane().add(panel);
 
-            createScreenCont(JPanel panel,);
+            createScreenCont();
     }
 
 
-    public void createScreenCont(JPanel panel) {
+    public void createScreenCont() {
 
 
         
@@ -206,7 +214,8 @@ public class template extends JFrame{
         System.out.println("CPU Memory info");          
         System.out.println("l1d="+cpu.l1dCacheSize()+ ", l1i="+cpu.l1iCacheSize()+ ", l2="+cpu.l2CacheSize()+ ", l3="+cpu.l3CacheSize());
 
-        
+        panel.add(new JLabel("Hello?"));
+
         panel.revalidate(); // Refresh the layout
         panel.repaint(); // Refresh the drawing
     }
