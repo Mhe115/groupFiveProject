@@ -8,10 +8,105 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import javax.swing.UIManager;
+//import javax.swing.UIManager;
 
 
 public class template extends JFrame{
+
+//Making the main screen content on the GUI
+
+//Seting up the GUI
+   public template() {
+        // Set up the JFrame
+
+            setTitle("Group Five Project");
+            setSize(800, 600);
+            setLocationRelativeTo(null);
+            setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+            JPanel panel = new JPanel();
+            getContentPane().add(panel);
+
+            createScreenCont(JPanel panel,);
+    }
+
+
+    public void createScreenCont(JPanel panel) {
+
+
+        
+        panel.add(new JLabel("Select Data Type"));
+
+        
+
+        
+
+        JButton cpubut = new JButton("CPU");
+        panel.add(cpubut);
+
+        cpubut.addActionListener(new cpuPick());
+
+        JButton pcibut = new JButton("PCI");
+        panel.add(pcibut);
+
+        pcibut.addActionListener(new pciPick());
+
+        JButton usbbut = new JButton("USB");
+        panel.add(usbbut);
+
+        usbbut.addActionListener(new usbPick());
+
+        JButton membut = new JButton("MEM");
+        panel.add(membut);
+
+        membut.addActionListener(new memPick());
+
+
+    }
+
+    private class cpuPick implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            System.out.println("\nCPU Selected");
+            showCPU();
+        }
+    }
+
+    private class pciPick implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            System.out.println("\nPCI Selected");
+            showPCI();
+        }
+    }
+
+    private class usbPick implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            System.out.println("\nUSB Selected");
+            showUSB();
+        }
+    }
+
+    private class memPick implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            System.out.println("\nMEM Selected");
+            showMEM();
+        }
+    }
+
+
+
+
 
 //Getting the PCI,CPU,USB and MEM Info
     //PCI Info
@@ -94,7 +189,7 @@ public class template extends JFrame{
     }
 
     //Memory Info
-    public static void showMEM(){
+    public void showMEM(){
         cpuInfo cpu = new cpuInfo();
         cpu.read(0);
 
@@ -110,92 +205,14 @@ public class template extends JFrame{
         System.out.println();
         System.out.println("CPU Memory info");          
         System.out.println("l1d="+cpu.l1dCacheSize()+ ", l1i="+cpu.l1iCacheSize()+ ", l2="+cpu.l2CacheSize()+ ", l3="+cpu.l3CacheSize());
-    }
-
-
-
-//Seting up the GUI
-   public template() {
-        // Set up the JFrame
-            setTitle("Group Five Project");
-            setSize(800, 600);
-            setLocationRelativeTo(null);
-            setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-            createScreenCont();
-    }
-//Making the main screen content on the GUI
-    private void createScreenCont() {
-        JPanel panel = new JPanel();
-        getContentPane().add(panel);
 
         
-        panel.add(new JLabel("Select Data Type"));
-
-        
-
-        
-
-        JButton cpubut = new JButton("CPU");
-        panel.add(cpubut);
-
-        cpubut.addActionListener(new cpuPick());
-
-        JButton pcibut = new JButton("PCI");
-        panel.add(pcibut);
-
-        pcibut.addActionListener(new pciPick());
-
-        JButton usbbut = new JButton("USB");
-        panel.add(usbbut);
-
-        usbbut.addActionListener(new usbPick());
-
-        JButton membut = new JButton("MEM");
-        panel.add(membut);
-
-        membut.addActionListener(new memPick());
+        panel.revalidate(); // Refresh the layout
+        panel.repaint(); // Refresh the drawing
     }
 
-    private class cpuPick implements ActionListener {
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            
-            System.out.println("\nCPU Selected");
-            showCPU();
-        }
-    }
 
-    private class pciPick implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            
-            System.out.println("\nPCI Selected");
-            showPCI();
-        }
-    }
-
-    private class usbPick implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            
-            System.out.println("\nUSB Selected");
-            showUSB();
-        }
-    }
-
-    private class memPick implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            
-            System.out.println("\nMEM Selected");
-            showMEM();
-        }
-    }
 
 
 
@@ -215,6 +232,8 @@ public class template extends JFrame{
         System.loadLibrary("sysinfo");
         sysInfo info = new sysInfo();
 
+        
+        
 
         //showMEM();
         //showCPU();
