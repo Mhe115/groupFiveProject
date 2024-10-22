@@ -1,15 +1,15 @@
 // Group Five Project - Conor Healy, Emmett Macken, Caitlin Amelia Moloney, Holly Best
 
 //Imports for button functionality
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent; //for the event of a button click
+import java.awt.event.ActionListener; //for waiting for a button click
 
 //Imports for GUI
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+import javax.swing.JButton; //button for the GUI
+import javax.swing.JFrame; //frame for the GUI
+import javax.swing.JLabel; //label component for text display
+import javax.swing.JPanel; //panel container for grouping components 
+import javax.swing.SwingUtilities; //manages GUI updates
 
 //JFree Chart Stuff
 
@@ -17,101 +17,107 @@ import javax.swing.SwingUtilities;
 //import javax.swing.UIManager;
 
 //JFrame GUI
-public class template extends JFrame{
+public class template extends JFrame{ //creates a JFrame window
 
     private JFrame frame;
     private JPanel panel;
 
 //Making the main screen content on the GUI
 
-//Seting up the GUI
+
+    //Seting up the GUI
    public template() {
-        // Set up the JFrame
+        // Set up the JFrame window
 
-            setTitle("Group Five Project");
-            setSize(800, 600);
-            setLocationRelativeTo(null);
-            setDefaultCloseOperation(EXIT_ON_CLOSE);
+            setTitle("Group Five Project"); //set window title
+            setSize(800, 600); //set window size
+            setLocationRelativeTo(null); //centers the window on the screen
+            setDefaultCloseOperation(EXIT_ON_CLOSE); //exits application when window is closed
 
-            frame = new JFrame("Refresh JFrame Example");
-            panel = new JPanel();
+            frame = new JFrame("Refresh JFrame Example"); //creates a new frame object
+            panel = new JPanel(); //creates a new panel for GUI components
 
-            getContentPane().add(panel);
+            getContentPane().add(panel); //adds the panel to the content pane of the frame
 
-            createScreenCont();
+            createScreenCont(); //calls createScreenCont() 
     }
 
 
-    public void createScreenCont() {
+    //method to add components to the screen
+    public void createScreenCont() { 
 
 
         
-        panel.add(new JLabel("Select Data Type"));
+        panel.add(new JLabel("Select Data Type")); //user prompt to "Select Data Type"
 
         
 
         
 
-        JButton cpubut = new JButton("CPU");
-        panel.add(cpubut);
+        JButton cpubut = new JButton("CPU"); //new button for CPU
+        panel.add(cpubut); //adds this CPU button to the panel
 
-        cpubut.addActionListener(new cpuPick());
+        cpubut.addActionListener(new cpuPick()); //checks for CPU button being pressed
 
-        JButton pcibut = new JButton("PCI");
-        panel.add(pcibut);
+        JButton pcibut = new JButton("PCI"); //new button for PCI
+        panel.add(pcibut); //adds this PCI button to the panel
 
-        pcibut.addActionListener(new pciPick());
+        pcibut.addActionListener(new pciPick()); //checks for PCI button being pressed
 
-        JButton usbbut = new JButton("USB");
-        panel.add(usbbut);
+        JButton usbbut = new JButton("USB"); //new button for USB
+        panel.add(usbbut); //adds this USB button to the panel
 
-        usbbut.addActionListener(new usbPick());
+        usbbut.addActionListener(new usbPick()); //checks for USB button being pressed
 
-        JButton membut = new JButton("MEM");
-        panel.add(membut);
+        JButton membut = new JButton("MEM"); //new button for MEM
+        panel.add(membut); //adds this MEM button to the panel
 
-        membut.addActionListener(new memPick());
+        membut.addActionListener(new memPick()); //checks for MEM button being pressed
 
 
     }
 
+    //a class for handling the CPU button click
     private class cpuPick implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            System.out.println("\nCPU Selected");
-            showCPU();
+            System.out.println("\nCPU Selected"); //print "CPU selected" when CPU is selected
+            showCPU(); //call showCPU method
         }
     }
 
+    //a class for handling the PCI button click
     private class pciPick implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            System.out.println("\nPCI Selected");
-            showPCI();
+            System.out.println("\nPCI Selected"); //print "PCI selected" when PCI is selected
+            showPCI(); //call showPCI method
         }
     }
 
+    //a class for handling the USB button click
     private class usbPick implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            System.out.println("\nUSB Selected");
-            showUSB();
+            System.out.println("\nUSB Selected"); //print "USB selected" when USB is selected
+            showUSB(); //call showUSB method
         }
     }
 
+    //a class for handling the MEM button click
     private class memPick implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            System.out.println("\nMEM Selected");
-            showMEM();
+            System.out.println("\nMEM Selected"); //print "MEM selected" when MEM is selected
+            showMEM(); //call showMEM method
         }
     }
 
@@ -120,27 +126,29 @@ public class template extends JFrame{
 
 
 //Getting the PCI,CPU,USB and MEM Info - Mark Burkley's
-    //PCI Info
+    //method to display PCI Info
     public static void showPCI(){ try{
-        pciInfo pci = new pciInfo();
-        pci.read();
+        pciInfo pci = new pciInfo(); //creates a new instance of pciInfor
+        pci.read(); //reads computer's PCI info
 
         System.out.println("\nThis machine has "+
-            pci.busCount()+" PCI buses ");
+            pci.busCount()+" PCI buses "); //message to display PCI bus info
 
-        // Iterate through each bus
+        // iterate through each PCI bus to print how many devices are connected
         for (int i = 0; i < pci.busCount(); i++) {
             System.out.println("Bus "+i+" has "+
                 pci.deviceCount(i)+" devices");
 
             // Iterate for up to 32 devices.  Not every device slot may be populated
             // so ensure at least one function before printing device information
+
+            //iterate through each device to print how many functions there are
             for (int j = 0; j < 64; j++) {
                 if (pci.functionCount (i, j) > 0) {
                     System.out.println("Bus "+i+" device "+j+" has "+
                         pci.functionCount(i, j)+" functions");
 
-                    // Iterate through up to 8 functions per device.
+                    // Iterate through each function for the device (up to 8 functions per device) to print vendor and product IDs
                     for (int k = 0; k < 8; k++) {
                         if (pci.functionPresent (i, j, k) > 0) {
                             System.out.println("Bus "+i+" device "+j+" function "+k+
@@ -152,35 +160,36 @@ public class template extends JFrame{
             }
         }
     } catch (Exception e){
-        System.err.println("Failed to get PCI info");
+        System.err.println("Failed to get PCI info"); //handles any exceptions in fetching PCI info
     }
     
     }
 
-    //USB Info
+    //method to display USB Info
     public static void showUSB(){
-        usbInfo usb = new usbInfo();
-        usb.read();
+        usbInfo usb = new usbInfo(); //creates a new instance of usbInfo
+        usb.read(); //reads computer's USB infp
         System.out.println("\nThis machine has "+
-            usb.busCount()+" USB buses ");
+            usb.busCount()+" USB buses "); //message to display USB bus info
 
         // Iterate through all of the USB buses
         for (int i = 1; i <= usb.busCount(); i++) {
             System.out.println("Bus "+i+" has "+
-                usb.deviceCount(i)+" devices");
+                usb.deviceCount(i)+" devices"); //print how many USB devices are attatched to the USB bus
 
-            // Iterate through all of the USB devices on the bus
+            // Iterate through all of the USB devices on the USB bus
             for (int j = 1; j <= usb.deviceCount(i); j++) {
                 System.out.println("Bus "+i+" device "+j+
                     " has vendor "+String.format("0x%04X", usb.vendorID(i,j))+
-                    " and product "+String.format("0x%04X", usb.productID(i,j)));
+                    " and product "+String.format("0x%04X", usb.productID(i,j))); //print vendor and product IDs for each USB device
             }
         }
     }
 
+    //method to display CPU Info
     public static void showCPU(){
-        cpuInfo cpu = new cpuInfo();
-        cpu.read(0);
+        cpuInfo cpu = new cpuInfo(); //creates a new instance of cpuInfo
+        cpu.read(0); //reads cpmuter's CPU info
 
         // Show CPU model, CPU sockets and cores per socket
         System.out.println("CPU " + cpu.getModel() + " has "+
@@ -199,24 +208,28 @@ public class template extends JFrame{
         System.out.println("core 1 idle="+cpu.getIdleTime(1)+"%");
     }
 
-    //Memory Info
+    //method to display Memory Info
     public void showMEM(){
-        cpuInfo cpu = new cpuInfo();
-        cpu.read(0);
+        cpuInfo cpu = new cpuInfo(); //creats a new instance of cpuInfor
+        cpu.read(0); //reads computer's CPU info
 
+        //display system properties
         String nameOS = "os.name";  
         String versionOS = "os.version";  
         String architectureOS = "os.arch";
+
+        //calculates memory available
         double memory = Runtime.getRuntime().totalMemory() / 1000000;
 
-        System.out.println("\nTotal memory available to JVM (Megabytes): " + memory );
-        System.out.println("\nOS: \t\t\t" + System.getProperty(nameOS));
-        System.out.println("OS Version: \t\t" + System.getProperty(versionOS));
-        System.out.println("OS Architecture: \t" + System.getProperty(architectureOS));
+        System.out.println("\nTotal memory available to JVM (Megabytes): " + memory ); //prints available memory
+        System.out.println("\nOS: \t\t\t" + System.getProperty(nameOS)); //prints OS name
+        System.out.println("OS Version: \t\t" + System.getProperty(versionOS)); //prints OS version
+        System.out.println("OS Architecture: \t" + System.getProperty(architectureOS)); //prints OS architecture
         System.out.println();
-        System.out.println("CPU Memory info");          
-        System.out.println("l1d="+cpu.l1dCacheSize()+ ", l1i="+cpu.l1iCacheSize()+ ", l2="+cpu.l2CacheSize()+ ", l3="+cpu.l3CacheSize());
+        System.out.println("CPU Memory info"); //prints header for CPU memory info      
+        System.out.println("l1d="+cpu.l1dCacheSize()+ ", l1i="+cpu.l1iCacheSize()+ ", l2="+cpu.l2CacheSize()+ ", l3="+cpu.l3CacheSize()); //prints CPU cache info
 
+        //updates panel
         panel.add(new JLabel("Hello?"));
 
         panel.revalidate(); // Refresh the layout
@@ -239,10 +252,10 @@ public class template extends JFrame{
 
 
 
-//main
+//main method to run the GUI
     public static void main(String[] args){
-        System.loadLibrary("sysinfo");
-        sysInfo info = new sysInfo();
+        System.loadLibrary("sysinfo"); //loads system library
+        sysInfo info = new sysInfo(); //creates a new instance of sysInfo
 
         
         
