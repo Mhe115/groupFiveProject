@@ -1,7 +1,10 @@
-// Group Five Project
+// Group Five Project - Conor Healy, Emmett Macken, Caitlin Amelia Moloney, Holly Best
+
+//Imports for button functionality
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//Import GUI
+
+//Imports for GUI
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,7 +16,7 @@ import javax.swing.SwingUtilities;
 
 //import javax.swing.UIManager;
 
-
+//JFrame GUI
 public class template extends JFrame{
 
     private JFrame frame;
@@ -116,7 +119,7 @@ public class template extends JFrame{
 
 
 
-//Getting the PCI,CPU,USB and MEM Info
+//Getting the PCI,CPU,USB and MEM Info - Mark Burkley's
     //PCI Info
     public static void showPCI(){ try{
         pciInfo pci = new pciInfo();
