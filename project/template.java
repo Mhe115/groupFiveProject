@@ -243,6 +243,32 @@ public class template extends JFrame{ //creates a JFrame window
                     " and product "+String.format("0x%04X", usb.productID(i,j))); //print vendor and product IDs for each USB device
             }
         }
+
+            try {
+            // Prepare the Maven command
+            ProcessBuilder processBuilder = new ProcessBuilder(
+                "mvn", "exec:java", "-Dexec.mainClass=com.example.cpuGraph");
+
+            // CHATGPT WROTE THIS TO FIX AN ERROR WITH ERROR STREAM
+            processBuilder.redirectErrorStream(true);
+
+            // Start the process
+            Process process = processBuilder.start();
+
+            // Capture the output
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line); // Print the Maven output
+            }
+
+            // Wait for the process to complete and get the exit code
+            int exitCode = process.waitFor();
+            System.out.println("Maven command exited with code: " + exitCode);
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+            }
+
     }
 
     //method to display CPU Info
@@ -278,7 +304,7 @@ public class template extends JFrame{ //creates a JFrame window
                 ProcessBuilder processBuilder = new ProcessBuilder(
                     "mvn", "exec:java", "-Dexec.mainClass=com.example.cpuGraph");
 
-                // Redirect error stream to the same output stream
+                // CHATGPT WROTE THIS TO FIX AN ERROR WITH ERROR STREAM
                 processBuilder.redirectErrorStream(true);
 
                 // Start the process
