@@ -1,3 +1,9 @@
+import java.io.FileWriter;   // Import the FileWriter class
+import java.io.IOException;  // Import the IOException class to handle errors
+
+
+
+
 // Group Five Project - Conor Healy, Emmett Macken, Caitlin Amelia Moloney, Holly Best
 
 //Imports for button functionality
@@ -131,6 +137,7 @@ public class template extends JFrame{ //creates a JFrame window
         pciInfo pci = new pciInfo(); //creates a new instance of pciInfor
         pci.read(); //reads computer's PCI info
 
+        FileWriter myWriter = new FileWriter("pci.txt");
         System.out.println("\nThis machine has "+
             pci.busCount()+" PCI buses "); //message to display PCI bus info
 
@@ -154,11 +161,15 @@ public class template extends JFrame{ //creates a JFrame window
                             System.out.println("Bus "+i+" device "+j+" function "+k+
                                 " has vendor "+String.format("0x%04X", pci.vendorID(i,j,k))+
                                 " and product "+String.format("0x%04X", pci.productID(i,j,k)));
+
+                                myWriter.write("\n" + i + "\n" + j + "\n" + k + "\n" + String.format("0x%04X", pci.vendorID(i,j,k)) + "\n" + String.format("0x%04X", pci.productID(i,j,k)));
                         }
                     }
                 }
             }
         }
+        myWriter.close();
+        System.out.println("Successfully wrote to pci.txt.");
     } catch (Exception e){
         System.err.println("Failed to get PCI info"); //handles any exceptions in fetching PCI info
     }
@@ -206,6 +217,17 @@ public class template extends JFrame{ //creates a JFrame window
         // core 1.  This assumes 10Hz so in one second we have 100
         cpu.read(1);
         System.out.println("core 1 idle="+cpu.getIdleTime(1)+"%");
+
+        try {
+            FileWriter myWriter = new FileWriter("CPU.txt");
+            myWriter.write(cpu.getModel() + "\n" + cpu.socketCount() + "\n" + cpu.coresPerSocket() + "\n" +cpu.l1dCacheSize()+ "\n" + cpu.l1iCacheSize()+ "\n" + cpu.l2CacheSize() + "\n" + cpu.l3CacheSize());
+            myWriter.close();
+            System.out.println("Successfully wrote to CPU.txt.");
+        }
+        catch (IOException e) {
+            System.out.println("An error occurred in writing to CPU.txt.");
+            e.printStackTrace();
+        }
     }
 
     //method to display Memory Info
