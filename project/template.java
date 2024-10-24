@@ -161,6 +161,21 @@ public class template extends JFrame{ //creates a JFrame window
                             System.out.println("Bus "+i+" device "+j+" function "+k+
                                 " has vendor "+String.format("0x%04X", pci.vendorID(i,j,k))+
                                 " and product "+String.format("0x%04X", pci.productID(i,j,k)));
+                                String busId = String.valueOf(i); //bus id
+
+                            String deviceId = String.valueOf(j); //device id
+
+                            String vendorId = String.format("0x%04X", pci.vendorID(i, j, k)); //vendor id
+
+                            String productId = String.format("0x%04X", pci.productID(i, j, k)); //product id
+
+                            String functionNumber = String.valueOf(k); //func no.
+
+ 
+
+                            //put PCI info variables into the string array
+
+                            pciDevices.add(new String[]{busId, deviceId, vendorId, productId, functionNumber});
 
                                 myWriter.write("\n" + i + "\n" + j + "\n" + k + "\n" + String.format("0x%04X", pci.vendorID(i,j,k)) + "\n" + String.format("0x%04X", pci.productID(i,j,k)));
                         }
