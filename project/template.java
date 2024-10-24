@@ -17,6 +17,9 @@ import javax.swing.JLabel; //label component for text display
 import javax.swing.JPanel; //panel container for grouping components 
 import javax.swing.SwingUtilities; //manages GUI updates
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 //JFree Chart Stuff
 
 
@@ -137,7 +140,7 @@ public class template extends JFrame{ //creates a JFrame window
         pciInfo pci = new pciInfo(); //creates a new instance of pciInfor
         pci.read(); //reads computer's PCI info
 
-        FileWriter myWriter = new FileWriter("MavenProject/pci.txt");
+        FileWriter myWriter = new FileWriter("pci.txt");
         System.out.println("\nThis machine has "+
             pci.busCount()+" PCI buses "); //message to display PCI bus info
 
@@ -191,6 +194,30 @@ public class template extends JFrame{ //creates a JFrame window
         }
         myWriter.close();
         System.out.println("Successfully wrote to pci.txt.");
+                try {
+            // Prepare the Maven command
+            ProcessBuilder processBuilder = new ProcessBuilder(
+                "mvn", "exec:java", "-Dexec.mainClass=com.example.cpuGraph");
+
+            // Redirect error stream to the same output stream
+            processBuilder.redirectErrorStream(true);
+            
+            // Start the process
+            Process process = processBuilder.start();
+
+            // Capture the output
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line); // Print the Maven output
+            }
+
+            // Wait for the process to complete and get the exit code
+            int exitCode = process.waitFor();
+            System.out.println("Maven command exited with code: " + exitCode);
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
     } catch (Exception e){
         System.err.println("Failed to get PCI info"); //handles any exceptions in fetching PCI info
     }
@@ -240,10 +267,36 @@ public class template extends JFrame{ //creates a JFrame window
         System.out.println("core 1 idle="+cpu.getIdleTime(1)+"%");
 
         try {
-            FileWriter myWriter = new FileWriter("MavenProject/CPU.txt");
+            FileWriter myWriter = new FileWriter("CPU.txt");
             myWriter.write(cpu.getModel() + "\n" + cpu.socketCount() + "\n" + cpu.coresPerSocket() + "\n" +cpu.l1dCacheSize()+ "\n" + cpu.l1iCacheSize()+ "\n" + cpu.l2CacheSize() + "\n" + cpu.l3CacheSize());
             myWriter.close();
             System.out.println("Successfully wrote to CPU.txt.");
+
+ 
+            try {
+                // Prepare the Maven command
+                ProcessBuilder processBuilder = new ProcessBuilder(
+                    "mvn", "exec:java", "-Dexec.mainClass=com.example.cpuGraph");
+
+                // Redirect error stream to the same output stream
+                processBuilder.redirectErrorStream(true);
+
+                // Start the process
+                Process process = processBuilder.start();
+
+                // Capture the output
+                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    System.out.println(line); // Print the Maven output
+                }
+
+                // Wait for the process to complete and get the exit code
+                int exitCode = process.waitFor();
+                System.out.println("Maven command exited with code: " + exitCode);
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         catch (IOException e) {
             System.out.println("An error occurred in writing to CPU.txt.");
