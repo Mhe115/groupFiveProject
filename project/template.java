@@ -158,10 +158,12 @@ public class template extends JFrame{ //creates a JFrame window
                     // Iterate through each function for the device (up to 8 functions per device) to print vendor and product IDs
                     for (int k = 0; k < 8; k++) {
                         if (pci.functionPresent (i, j, k) > 0) {
-                            System.out.println("Bus "+i+" device "+j+" function "+k+
-                                " has vendor "+String.format("0x%04X", pci.vendorID(i,j,k))+
-                                " and product "+String.format("0x%04X", pci.productID(i,j,k)));
-                                String busId = String.valueOf(i); //bus id
+                            //System.out.println("Bus "+i+" device "+j+" function "+k+
+                            //    " has vendor "+String.format("0x%04X", pci.vendorID(i,j,k))+
+                            //    " and product "+String.format("0x%04X", pci.productID(i,j,k)));
+                            //    String busId = String.valueOf(i); //bus id
+
+                            String busId = String.valueOf(i); //bus id
 
                             String deviceId = String.valueOf(j); //device id
 
@@ -171,13 +173,15 @@ public class template extends JFrame{ //creates a JFrame window
 
                             String functionNumber = String.valueOf(k); //func no.
 
- 
+                            
 
                             //put PCI info variables into the string array
 
-                            pciDevices.add(new String[]{busId, deviceId, vendorId, productId, functionNumber});
+                            String[] pciDevices = {busId, deviceId, vendorId, productId, functionNumber};
 
-                                myWriter.write("\n" + i + "\n" + j + "\n" + k + "\n" + String.format("0x%04X", pci.vendorID(i,j,k)) + "\n" + String.format("0x%04X", pci.productID(i,j,k)));
+                            System.out.println(pciDevices[0] + pciDevices[1] + pciDevices[2] + pciDevices[3] + pciDevices[4]);
+
+                            myWriter.write("\n" + i + "\n" + j + "\n" + k + "\n" + String.format("0x%04X", pci.vendorID(i,j,k)) + "\n" + String.format("0x%04X", pci.productID(i,j,k)));
                         }
                     }
                 }
