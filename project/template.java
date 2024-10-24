@@ -137,7 +137,7 @@ public class template extends JFrame{ //creates a JFrame window
         pciInfo pci = new pciInfo(); //creates a new instance of pciInfor
         pci.read(); //reads computer's PCI info
 
-        FileWriter myWriter = new FileWriter("pci.txt");
+        FileWriter myWriter = new FileWriter("MavenProject/pci.txt");
         System.out.println("\nThis machine has "+
             pci.busCount()+" PCI buses "); //message to display PCI bus info
 
@@ -181,7 +181,9 @@ public class template extends JFrame{ //creates a JFrame window
 
                             System.out.println(pciDevices[0] + pciDevices[1] + pciDevices[2] + pciDevices[3] + pciDevices[4]);
 
-                            myWriter.write("\n" + i + "\n" + j + "\n" + k + "\n" + String.format("0x%04X", pci.vendorID(i,j,k)) + "\n" + String.format("0x%04X", pci.productID(i,j,k)));
+                            
+
+                            myWriter.write(i + "\n" + j + "\n" + k + "\n" + String.format("0x%04X", pci.vendorID(i,j,k)) + "\n" + String.format("0x%04X", pci.productID(i,j,k)) + "\n");
                         }
                     }
                 }
@@ -238,7 +240,7 @@ public class template extends JFrame{ //creates a JFrame window
         System.out.println("core 1 idle="+cpu.getIdleTime(1)+"%");
 
         try {
-            FileWriter myWriter = new FileWriter("CPU.txt");
+            FileWriter myWriter = new FileWriter("MavenProject/CPU.txt");
             myWriter.write(cpu.getModel() + "\n" + cpu.socketCount() + "\n" + cpu.coresPerSocket() + "\n" +cpu.l1dCacheSize()+ "\n" + cpu.l1iCacheSize()+ "\n" + cpu.l2CacheSize() + "\n" + cpu.l3CacheSize());
             myWriter.close();
             System.out.println("Successfully wrote to CPU.txt.");
