@@ -294,7 +294,7 @@ public class template extends JFrame{ //creates a JFrame window
 
         try {
             FileWriter myWriter = new FileWriter("CPU.txt");
-            myWriter.write(cpu.getModel() + "\n" + cpu.socketCount() + "\n" + cpu.coresPerSocket() + "\n" +cpu.l1dCacheSize()+ "\n" + cpu.l1iCacheSize()+ "\n" + cpu.l2CacheSize() + "\n" + cpu.l3CacheSize());
+            myWriter.write(cpu.getModel() + cpu.socketCount() + "\n" + cpu.coresPerSocket() + "\n" +cpu.l1dCacheSize()+ "\n" + cpu.l1iCacheSize()+ "\n" + cpu.l2CacheSize() + "\n" + cpu.l3CacheSize());
             myWriter.close();
             System.out.println("Successfully wrote to CPU.txt.");
 
@@ -357,22 +357,6 @@ public class template extends JFrame{ //creates a JFrame window
         panel.revalidate(); // Refresh the layout
         panel.repaint(); // Refresh the drawing
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //main method to run the GUI
     public static void main(String[] args){

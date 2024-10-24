@@ -13,7 +13,7 @@ import org.jfree.data.general.DefaultPieDataset;
 import javax.swing.*;
 import java.awt.*;
 
-public class cpuGraph extends JFrame{
+public class memGraph extends JFrame{
   public static void main(String[] args) {
     int l1dCacheSize = 0, l1iCacheSize = 0, l2CacheSize = 0, l3CacheSize = 0;
     String model = " ", socketCount = " ", coresPerSocket = " ";
@@ -45,7 +45,7 @@ public class cpuGraph extends JFrame{
     }
 
     SwingUtilities.invokeLater(() -> {
-    cpuGraph example = new cpuGraph("Pie Chart Example");
+    memGraph example = new memGraph("Pie Chart Example");
     example.setSize(800, 600);
     example.setLocationRelativeTo(null);
     example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -58,7 +58,7 @@ public class cpuGraph extends JFrame{
 
   }
 
-      public cpuGraph(String title) {
+      public memGraph(String title) {
         super(title);
 
         // Create a dataset

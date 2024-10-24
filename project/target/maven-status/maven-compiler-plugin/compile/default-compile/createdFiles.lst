@@ -1,2 +1,4 @@
-com/example/cpuGraph.class
 com/example/pciGraph.class
+com/example/memGraph.class
+com/example/cpuGraph.class
+com/example/usbGraph.class

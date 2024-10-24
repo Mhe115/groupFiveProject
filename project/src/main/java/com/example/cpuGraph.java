@@ -27,6 +27,7 @@ public class cpuGraph extends JFrame{
         if (myReader.hasNextLine()) socketCount = myReader.nextLine();
         if (myReader.hasNextLine()) coresPerSocket = myReader.nextLine();
         if (myReader.hasNextLine()) l1dCacheSize = Integer.parseInt(myReader.nextLine());
+        if (myReader.hasNextLine()) l1iCacheSize = Integer.parseInt(myReader.nextLine());
         if (myReader.hasNextLine()) l2CacheSize= Integer.parseInt(myReader.nextLine());
         if (myReader.hasNextLine()) l3CacheSize= Integer.parseInt(myReader.nextLine());
 
@@ -75,9 +76,10 @@ public class cpuGraph extends JFrame{
 
         // Customize the chart
         PiePlot plot = (PiePlot) chart.getPlot();
-        plot.setSectionPaint("Java", new Color(0, 128, 0));
-        plot.setSectionPaint("Python", new Color(0, 0, 255));
-        plot.setSectionPaint("C++", new Color(255, 0, 0));
+        plot.setSectionPaint("L2", new Color(0, 128, 0));
+        plot.setSectionPaint("L1d", new Color(0, 0, 255));
+        plot.setSectionPaint("L3", new Color(255, 0, 0));
+        plot.setSectionPaint("L1i", new Color(255, 255, 0));
 
         // Add the chart to a panel
         ChartPanel chartPanel = new ChartPanel(chart);
@@ -85,12 +87,46 @@ public class cpuGraph extends JFrame{
         setContentPane(chartPanel);
     }
 
-    private DefaultPieDataset createDataset() {
+    public DefaultPieDataset createDataset() {
+
+        int l1dCacheSize = 0, l1iCacheSize = 0, l2CacheSize = 0, l3CacheSize = 0;
+        String model = " ", socketCount = " ", coresPerSocket = " ";
+
+        try {
+          File myObj = new File("CPU.txt");
+          Scanner myReader = new Scanner(myObj);
+          while (myReader.hasNextLine()) {
+            // Read the values in groups of 5
+            if (myReader.hasNextLine()) model = myReader.nextLine();
+            if (myReader.hasNextLine()) socketCount = myReader.nextLine();
+            if (myReader.hasNextLine()) coresPerSocket = myReader.nextLine();
+            if (myReader.hasNextLine()) l1dCacheSize = Integer.parseInt(myReader.nextLine());
+            if (myReader.hasNextLine()) l1iCacheSize = Integer.parseInt(myReader.nextLine());
+            if (myReader.hasNextLine()) l2CacheSize= Integer.parseInt(myReader.nextLine());
+            if (myReader.hasNextLine()) l3CacheSize= Integer.parseInt(myReader.nextLine());
+
+            // Printing the values to console
+            //System.out.println("i: " + i + ", j: " + j + ", k: " + k);
+            //System.out.println("PCIvendorID: " + PCIvendorID + ", PCIproductID: " + PCIproductID);
+            //System.out.println("--------------");
+
+            System.out.println(model + socketCount + coresPerSocket + l1dCacheSize + l1iCacheSize + l2CacheSize + l3CacheSize);
+
+          }
+          myReader.close();
+        } catch (FileNotFoundException e) {
+          System.out.println("An error occurred.");
+          e.printStackTrace();
+        }
+
+
+
+
         DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Java", 40);
-        dataset.setValue("Python", 30);
-        dataset.setValue("C++", 20);
-        dataset.setValue("JavaScript", 10);
+        dataset.setValue("L2", l2CacheSize);
+        dataset.setValue("L1i", l1iCacheSize);
+        dataset.setValue("L3", l3CacheSize);
+        dataset.setValue("L1d", l1dCacheSize);
         return dataset;
     }
 }
