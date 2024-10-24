@@ -39,7 +39,7 @@ public class template extends JFrame{ //creates a JFrame window
         // Set up the JFrame window
 
             setTitle("Group Five Project"); //set window title
-            setSize(800, 600); //set window size
+            setSize(400, 200); //set window size
             setLocationRelativeTo(null); //centers the window on the screen
             setDefaultCloseOperation(EXIT_ON_CLOSE); //exits application when window is closed
 
@@ -197,7 +197,7 @@ public class template extends JFrame{ //creates a JFrame window
                 try {
             // Prepare the Maven command
             ProcessBuilder processBuilder = new ProcessBuilder(
-                "mvn", "exec:java", "-Dexec.mainClass=com.example.cpuGraph");
+                "mvn", "exec:java", "-Dexec.mainClass=com.example.pciGraph");
 
             // Redirect error stream to the same output stream
             processBuilder.redirectErrorStream(true);
@@ -352,7 +352,9 @@ public class template extends JFrame{ //creates a JFrame window
         System.out.println("l1d="+cpu.l1dCacheSize()+ ", l1i="+cpu.l1iCacheSize()+ ", l2="+cpu.l2CacheSize()+ ", l3="+cpu.l3CacheSize()); //prints CPU cache info
 
         //updates panel
-        panel.add(new JLabel("Hello?"));
+        panel.add(new JLabel("\nTotal memory available to JVM (Megabytes): " + memory));
+        panel.add(new JLabel("<html><br/>"));
+        panel.add(new JLabel("OS:" + System.getProperty(nameOS)));
 
         panel.revalidate(); // Refresh the layout
         panel.repaint(); // Refresh the drawing

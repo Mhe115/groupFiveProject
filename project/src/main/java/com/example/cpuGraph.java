@@ -46,9 +46,9 @@ public class cpuGraph extends JFrame{
     }
 
     SwingUtilities.invokeLater(() -> {
-    cpuGraph example = new cpuGraph("Pie Chart Example");
-    example.setSize(800, 600);
-    example.setLocationRelativeTo(null);
+    cpuGraph example = new cpuGraph("CPU Info");
+    example.setSize(600, 400);
+    example.setLocation(0,0);
     example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     example.setVisible(true);
     });
@@ -67,7 +67,7 @@ public class cpuGraph extends JFrame{
 
         // Create the chart
         JFreeChart chart = ChartFactory.createPieChart(
-                "Programming Language Usage",  // Chart title
+                "CPU Cache Sizes",  // Chart title
                 dataset,                       // Dataset
                 true,                          // Include legend
                 true,
@@ -105,10 +105,8 @@ public class cpuGraph extends JFrame{
             if (myReader.hasNextLine()) l2CacheSize= Integer.parseInt(myReader.nextLine());
             if (myReader.hasNextLine()) l3CacheSize= Integer.parseInt(myReader.nextLine());
 
-            // Printing the values to console
-            //System.out.println("i: " + i + ", j: " + j + ", k: " + k);
-            //System.out.println("PCIvendorID: " + PCIvendorID + ", PCIproductID: " + PCIproductID);
-            //System.out.println("--------------");
+            //Prints the values to console
+
 
             System.out.println(model + socketCount + coresPerSocket + l1dCacheSize + l1iCacheSize + l2CacheSize + l3CacheSize);
 
