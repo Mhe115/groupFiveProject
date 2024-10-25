@@ -40,7 +40,7 @@ public class template extends JFrame{ //creates a JFrame window
    public template() {
         // Set up the JFrame window
         setTitle("System Information"); // Set window title
-        setSize(600, 400); // Set window size
+        setSize(400, 200); // Set window size
         setLocationRelativeTo(null); // Center the window on the screen
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Exits application when window is closed
         
