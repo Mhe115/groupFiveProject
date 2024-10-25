@@ -20,6 +20,8 @@ import javax.swing.SwingUtilities; //manages GUI updates
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import java.awt.Color;//for color of JFrame panel
+
 //JFree Chart Stuff
 
 
@@ -37,18 +39,26 @@ public class template extends JFrame{ //creates a JFrame window
     //Seting up the GUI
    public template() {
         // Set up the JFrame window
-
-            setTitle("Group Five Project"); //set window title
-            setSize(400, 200); //set window size
-            setLocationRelativeTo(null); //centers the window on the screen
-            setDefaultCloseOperation(EXIT_ON_CLOSE); //exits application when window is closed
-
-            frame = new JFrame("Refresh JFrame Example"); //creates a new frame object
-            panel = new JPanel(); //creates a new panel for GUI components
-
-            getContentPane().add(panel); //adds the panel to the content pane of the frame
-
-            createScreenCont(); //calls createScreenCont() 
+        setTitle("System Information"); // Set window title
+        setSize(600, 400); // Set window size
+        setLocationRelativeTo(null); // Center the window on the screen
+        setDefaultCloseOperation(EXIT_ON_CLOSE); // Exits application when window is closed
+        
+        // Create a new JFrame and JPanel
+        frame = new JFrame("Refresh JFrame Example"); // Creates a new frame object
+        panel = new JPanel(); // Creates a new panel for GUI components
+        
+        // Set a background color for the JPanel (e.g., light blue)
+        panel.setBackground(Color.CYAN); // You can change Color.CYAN to any other color
+        
+        // Add the panel to the content pane of the frame
+        getContentPane().add(panel);
+        
+        // Calls createScreenCont()
+        createScreenCont();
+        
+        // Make sure the frame is visible
+        setVisible(true);
     }
 
 
