@@ -290,7 +290,15 @@ public class template extends JFrame{ //creates a JFrame window
         // Sleep for 1 second and display the idle time percentage for
         // core 1.  This assumes 10Hz so in one second we have 100
         cpu.read(1);
-        System.out.println("core 1 idle="+cpu.getIdleTime(1)+"%");
+        System.out.println("Core 1 idle time ="+cpu.getIdleTime(1)+"%");
+        
+        System.out.println("Core 1 busy time ="+cpu.getUserTime(1)+"%");
+        
+        double idleTime = cpu.getIdleTime(1);
+        double busyTime = cpu.getUserTime(1);
+        double ratio = busyTime/idleTime;
+
+        System.out.println("Core 1 load =  "+ ratio +"%");
         
 
         try {

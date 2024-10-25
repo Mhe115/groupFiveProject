@@ -13,10 +13,42 @@ import org.jfree.data.general.DefaultPieDataset;
 import javax.swing.*;
 import java.awt.*;
 
+//Importing the nessesary iteams to conver a cvs file to a data base so we can use SQL commands on it
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 public class pciGraph extends JFrame{
   public static void main(String[] args) {
     int i = 0, j = 0, k = 0;
     String PCIvendorID = " ", PCIproductID = " ";
+
+            // File path to the CSV file
+        String csvFilePath = "pci_devices.csv";
+
+        // Set up the JDBC URL for H2 Database, referencing the CSV file
+        String jdbcUrl = "jdbc:h2:mem:";  // Using an in-memory H2 database
+
+        try (Connection conn = DriverManager.getConnection(jdbcUrl, "sa", "");
+             Statement stmt = conn.createStatement()) {
+
+            // Create a table by reading the CSV file
+            String createTableQuery = String.format(
+                "CREATE TABLE pciDevices AS SELECT * FROM CSVREAD('%s')", csvFilePath);
+            stmt.execute(createTableQuery);
+
+            // Now query the CSV data with SQL
+            ResultSet rs = stmt.executeQuery("SELECT * FROM pciDevices");
+
+            // Process the result set
+            while (rs.next()) {
+                System.out.println(rs.getString("Vender Id") + " " );
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     try {
       File myObj = new File("pci.txt");
