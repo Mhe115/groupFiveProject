@@ -180,7 +180,7 @@ public class template extends JFrame{ //creates a JFrame window
 
                             //put PCI info variables into the string array
 
-                            String[] pciDevices = {busId, deviceId, vendorId, productId, functionNumber};
+                            String[] pciDevices = {busId, deviceId, functionNumber, productId, vendorId};
 
                             System.out.println(pciDevices[0] + pciDevices[1] + pciDevices[2] + pciDevices[3] + pciDevices[4]);
 
@@ -291,6 +291,7 @@ public class template extends JFrame{ //creates a JFrame window
         // core 1.  This assumes 10Hz so in one second we have 100
         cpu.read(1);
         System.out.println("core 1 idle="+cpu.getIdleTime(1)+"%");
+        
 
         try {
             FileWriter myWriter = new FileWriter("CPU.txt");
