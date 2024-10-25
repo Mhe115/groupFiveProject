@@ -2,8 +2,7 @@
 
 Updated to Mark's Final Library #3
 
-Gradle is there now so we can use JFree Chart I hope
+Maven integration so graphs, we need to get more data on the final GUIs
 
-Basic GUI in Place
 
-V 0.29
+V 0.4
