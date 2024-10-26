@@ -26,11 +26,35 @@ import java.awt.*;
 public class pciGraph {
 
     public static void main(String[] args) {
-        // Absolute path to your CSV file
+        
+
+        
+        int functionNumber = 0, deviceId = 0, busId = 0;
+        String PCIvendorID = " ", PCIproductID = " ", vendor = " ";
+        
         String csvFilePath = "pci_devices.csv";
 
+        String sqlQuery = " ";
+
+        try {
+          File myObj = new File("pci.txt");
+          Scanner myReader = new Scanner(myObj);
+          while (myReader.hasNextLine()) {
+            // Read the values in groups of 5
+            if (myReader.hasNextLine()) busId = Integer.parseInt(myReader.nextLine());
+            if (myReader.hasNextLine()) deviceId = Integer.parseInt(myReader.nextLine());
+            if (myReader.hasNextLine()) functionNumber = Integer.parseInt(myReader.nextLine());
+            if (myReader.hasNextLine()) PCIvendorID = myReader.nextLine();
+            if (myReader.hasNextLine()) PCIproductID = myReader.nextLine();
+
+            // Printing the values to console
+            System.out.println("busId: " + busId + ", deviceId: " + deviceId + ", functionNumber: " + functionNumber);
+            System.out.println("PCIvendorID: " + PCIvendorID + ", PCIproductID: " + PCIproductID);
+            System.out.println("Vendor:" + vendor);
+            System.out.println("--------------");
+
         // SQL query to read all rows from the CSV
-        String sqlQuery = "SELECT * FROM CSVREAD('" + csvFilePath + "')";
+        sqlQuery = "SELECT * FROM CSVREAD('" + csvFilePath + "')WHERE VENDORID LIKE " + PCIvendorID;
 
         try {
             // Connect to the H2 in-memory database with a specific schema
@@ -66,5 +90,17 @@ public class pciGraph {
         } catch (SQLException e) {
             System.err.println("SQL Exception: " + e.getMessage());
         }
+
+          }
+          myReader.close();
+        } catch (FileNotFoundException e) {
+          System.out.println("An error occurred.");
+          e.printStackTrace();
+        }
+    
+        
+        
+
+
     }
 }
