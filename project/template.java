@@ -316,16 +316,8 @@ public class template extends JFrame{ //creates a JFrame window
         //3. divide CPUload by number of core loads 
         
         cpu.read(0);
-        double core1 = cpu.getUserTime(1)/cpu.getIdleTime(1);
-        double core2 = cpu.getUserTime(2)/cpu.getIdleTime(2);
-        double core3 = cpu.getUserTime(3)/cpu.getIdleTime(3);
-        double core4 = cpu.getUserTime(4)/cpu.getIdleTime(4);
-        double core5 = cpu.getUserTime(5)/cpu.getIdleTime(5);
-        double core6 = cpu.getUserTime(6)/cpu.getIdleTime(6);
-        double core7 = cpu.getUserTime(7)/cpu.getIdleTime(7);
-        double core8 = cpu.getUserTime(8)/cpu.getIdleTime(8);
 
-        double cpuLoad = core1 + core2 + core3 + core4 + core5 + core6+ core7 + core8;
+        double cpuLoad = cpu.getUserTime()/cpu.getIdleTime();
         double systemLoad = cpuLoad / 8;
 
         System.out.println("CPU load = " + cpuLoad);
