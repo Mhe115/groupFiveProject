@@ -313,11 +313,14 @@ public class template extends JFrame{ //creates a JFrame window
         //to get overall system load, get average load across all cores, so add all core loads then divide by number of core loads
         //1. equal core load x = cpu.getBusy/cpu.getIdleTime repeat for number of cores
         //2. add all cores = to cpuLoad
-        //3. divide CPUload by number of core loads 
-        
+        //3. divide CPUload by number of core loads
         cpu.read(0);
+<<<<<<< HEAD
 
         double cpuLoad = idleTime/busyTime;
+=======
+        double cpuLoad = cpu.getUserTime()/cpu.getIdleTime();
+>>>>>>> b5de409 (USB added/removed)
         double systemLoad = cpuLoad / 8;
 
         System.out.println("CPU load = " + cpuLoad);
