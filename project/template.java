@@ -326,7 +326,6 @@ public class template extends JFrame{ //creates a JFrame window
 
         cpu.read(0);
         double cpuLoad = cpu.getUserTime()/cpu.getIdleTime();
->>>>>>> b5de409 (USB added/removed)
         double systemLoad = cpuLoad / 8;
 
         System.out.println("CPU load = " + cpuLoad);
