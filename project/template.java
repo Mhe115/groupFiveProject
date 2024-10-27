@@ -246,11 +246,20 @@ public class template extends JFrame{ //creates a JFrame window
             System.out.println("Bus "+i+" has "+
                 usb.deviceCount(i)+" devices"); //print how many USB devices are attatched to the USB bus
 
-            // Iterate through all of the USB devices on the USB bus
-            for (int j = 1; j <= usb.deviceCount(i); j++) {
-                System.out.println("Bus "+i+" device "+j+
-                    " has vendor "+String.format("0x%04X", usb.vendorID(i,j))+
-                    " and product "+String.format("0x%04X", usb.productID(i,j))); //print vendor and product IDs for each USB device
+            //new device removed or added
+            for(int count = 0; count<=usb.deviceCount(); count++){
+                System.out.println("New USB device has been added.");
+                }
+                
+            for(int count = 1; count<=usb.deviceCount(); count--){
+                Sytem.out.println("USB Device has been removed.");
+                }
+
+                // Iterate through all of the USB devices on the USB bus
+                for (int j = 1; j <= usb.deviceCount(i); j++) {
+                    System.out.println("Bus "+i+" device "+j+
+                        " has vendor "+String.format("0x%04X", usb.vendorID(i,j))+
+                        " and product "+String.format("0x%04X", usb.productID(i,j))); //print vendor and product IDs for each USB device
             }
         }
 
@@ -314,11 +323,8 @@ public class template extends JFrame{ //creates a JFrame window
         //1. equal core load x = cpu.getBusy/cpu.getIdleTime repeat for number of cores
         //2. add all cores = to cpuLoad
         //3. divide CPUload by number of core loads
-        cpu.read(0);
-<<<<<<< HEAD
 
-        double cpuLoad = idleTime/busyTime;
-=======
+        cpu.read(0);
         double cpuLoad = cpu.getUserTime()/cpu.getIdleTime();
 >>>>>>> b5de409 (USB added/removed)
         double systemLoad = cpuLoad / 8;
