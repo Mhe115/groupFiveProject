@@ -317,7 +317,7 @@ public class template extends JFrame{ //creates a JFrame window
         
         cpu.read(0);
 
-        double cpuLoad = cpu.getUserTime()/cpu.getIdleTime();
+        double cpuLoad = idleTime/busyTime;
         double systemLoad = cpuLoad / 8;
 
         System.out.println("CPU load = " + cpuLoad);

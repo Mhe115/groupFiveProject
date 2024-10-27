@@ -29,12 +29,14 @@ public class pciGraph {
         
 
         
-        int functionNumber = 0, deviceId = 0, busId = 0;
-        String PCIvendorID = " ", PCIproductID = " ", vendor = " ";
+        int functionNumber = 0, busId = 0;
+        String PCIvendorID = " ", PCIproductID = " ", vendor = " ", deviceId = " ";
         
         String csvFilePath = "pci_devices.csv";
 
         String sqlQuery = " ";
+
+        String PCIvendorIDlessHex = " ", deviceIDlessHex = " ", PCIproductIDlessHex = " ";
 
         try {
           File myObj = new File("pci.txt");
@@ -42,7 +44,7 @@ public class pciGraph {
           while (myReader.hasNextLine()) {
             // Read the values in groups of 5
             if (myReader.hasNextLine()) busId = Integer.parseInt(myReader.nextLine());
-            if (myReader.hasNextLine()) deviceId = Integer.parseInt(myReader.nextLine());
+            if (myReader.hasNextLine()) deviceId = myReader.nextLine();
             if (myReader.hasNextLine()) functionNumber = Integer.parseInt(myReader.nextLine());
             if (myReader.hasNextLine()) PCIvendorID = myReader.nextLine();
             if (myReader.hasNextLine()) PCIproductID = myReader.nextLine();
@@ -53,50 +55,59 @@ public class pciGraph {
             System.out.println("Vendor:" + vendor);
             System.out.println("--------------");
 
-        // SQL query to read all rows from the CSV
-        sqlQuery = "SELECT * FROM CSVREAD('" + csvFilePath + "')WHERE VENDORID LIKE " + PCIvendorID;
 
-        try {
-            // Connect to the H2 in-memory database with a specific schema
-            Connection conn = DriverManager.getConnection("jdbc:h2:mem:testdb");
-
-            // Create a statement object and execute the SQL query
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sqlQuery);
-
-            // Retrieve metadata to get column names and count
-            ResultSetMetaData metaData = rs.getMetaData();
-            int columnCount = metaData.getColumnCount();
-
-            // Print column names
-            for (int i = 1; i <= columnCount; i++) {
-                System.out.print(metaData.getColumnName(i) + "\t");
+            PCIvendorIDlessHex = PCIvendorID.substring(2);
+            if (PCIproductID.startsWith("0x")) {
+                PCIproductIDlessHex = PCIproductID.substring(2);
+            } else {
+                PCIproductIDlessHex = PCIproductID;
             }
-            System.out.println();
 
-            // Print rows dynamically
-            while (rs.next()) {
+            
+            // SQL query to read all rows from the CSV
+            sqlQuery = "SELECT * FROM CSVREAD('" + csvFilePath + "') WHERE VENDORID LIKE " + PCIvendorIDlessHex + " AND DeviceID LIKE " + PCIproductIDlessHex;
+            System.out.println(sqlQuery);
+            try {
+                // Connect to the H2 in-memory database with a specific schema
+                Connection conn = DriverManager.getConnection("jdbc:h2:mem:testdb");
+
+                // Create a statement object and execute the SQL query
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sqlQuery);
+
+                // Retrieve metadata to get column names and count
+                ResultSetMetaData metaData = rs.getMetaData();
+                int columnCount = metaData.getColumnCount();
+
+                // Print column names
                 for (int i = 1; i <= columnCount; i++) {
-                    System.out.print(rs.getString(i) + "\t");
+                    System.out.print(metaData.getColumnName(i) + "\t");
                 }
                 System.out.println();
+
+                // Print rows dynamically
+                while (rs.next()) {
+                    for (int i = 1; i <= columnCount; i++) {
+                        System.out.print(rs.getString(i) + "\t");
+                    }
+                    System.out.println();
+                }
+
+                // Close the resources
+                rs.close();
+                stmt.close();
+                conn.close();
+
+            } catch (SQLException e) {
+                System.err.println("SQL Exception: " + e.getMessage());
             }
 
-            // Close the resources
-            rs.close();
-            stmt.close();
-            conn.close();
-
-        } catch (SQLException e) {
-            System.err.println("SQL Exception: " + e.getMessage());
-        }
-
-          }
-          myReader.close();
-        } catch (FileNotFoundException e) {
-          System.out.println("An error occurred.");
-          e.printStackTrace();
-        }
+              }
+              myReader.close();
+            } catch (FileNotFoundException e) {
+              System.out.println("An error occurred.");
+              e.printStackTrace();
+            }
     
         
         
