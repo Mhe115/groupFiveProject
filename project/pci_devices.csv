@@ -1,4 +1,4 @@
-VendorID,Vendor Name,DeviceID,Device Name
+VendorID,VendorName,DeviceID,DeviceName
 0010,"Allied Telesis, Inc (Wrong ID)",8139,AT-2500TX V3 Ethernet
 0014,Loongson Technology LLC,7a00,Hyper Transport Bridge Controller
 0014,Loongson Technology LLC,7a02,APB (Advanced Peripheral Bus) Controller

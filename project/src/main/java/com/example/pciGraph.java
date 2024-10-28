@@ -50,10 +50,10 @@ public class pciGraph {
             if (myReader.hasNextLine()) PCIproductID = myReader.nextLine();
 
             // Printing the values to console
-            System.out.println("busId: " + busId + ", deviceId: " + deviceId + ", functionNumber: " + functionNumber);
+            /*System.out.println("busId: " + busId + ", deviceId: " + deviceId + ", functionNumber: " + functionNumber);
             System.out.println("PCIvendorID: " + PCIvendorID + ", PCIproductID: " + PCIproductID);
             System.out.println("Vendor:" + vendor);
-            System.out.println("--------------");
+            System.out.println("--------------");*/
 
 
             PCIvendorIDlessHex = PCIvendorID.substring(2);
@@ -65,8 +65,9 @@ public class pciGraph {
 
             
             // SQL query to read all rows from the CSV
-            sqlQuery = "SELECT * FROM CSVREAD('" + csvFilePath + "') WHERE VENDORID LIKE " + PCIvendorIDlessHex + " AND DeviceID LIKE " + PCIproductIDlessHex;
-            System.out.println(sqlQuery);
+            sqlQuery = "SELECT VendorName, DeviceName FROM CSVREAD('" + csvFilePath + "') WHERE LOWER(VENDORID) LIKE LOWER('" + PCIvendorIDlessHex + "') AND LOWER(DeviceID) LIKE LOWER('" + PCIproductIDlessHex + "')";
+            //System.out.println(sqlQuery);
+            //System.out.println();
             try {
                 // Connect to the H2 in-memory database with a specific schema
                 Connection conn = DriverManager.getConnection("jdbc:h2:mem:testdb");
@@ -79,11 +80,11 @@ public class pciGraph {
                 ResultSetMetaData metaData = rs.getMetaData();
                 int columnCount = metaData.getColumnCount();
 
-                // Print column names
+                /*// Print column names
                 for (int i = 1; i <= columnCount; i++) {
                     System.out.print(metaData.getColumnName(i) + "\t");
                 }
-                System.out.println();
+                System.out.println();*/
 
                 // Print rows dynamically
                 while (rs.next()) {
