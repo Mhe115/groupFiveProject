@@ -251,11 +251,11 @@ public class template extends JFrame{ //creates a JFrame window
             count <= usb.deviceCount();
 
             if (count++){
-                System.out.println(“New USB device has been added.”); 
+                System.out.println("Device has been removed"); 
             }else if (count--){ 
-                System.out.println(“USB device has been removed”); 
+                System.out.println("Device has been added"); 
             }else{ 
-                System.out.println(“”); 
+                System.out.println(""); 
             } 
 
                 // Iterate through all of the USB devices on the USB bus
