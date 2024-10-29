@@ -186,7 +186,12 @@ public class template extends JFrame{ //creates a JFrame window
 
                             String functionNumber = String.valueOf(k); //func no.
 
-                            
+                            //updates panel
+                        panel.add(new JLabel("\nBus Id = " + busId + "\nDevice Id = " + deviceId + "\nVendor Id = " + vendorId + "\nProduct Id = " + productId + "\nFunction Number = " + functionNumber));
+                        panel.add(new JLabel("<html><br/>"));
+
+                        panel.revalidate(); // Refresh the layout
+                        panel.repaint(); // Refresh the drawing
 
                             //put PCI info variables into the string array
 
@@ -197,7 +202,6 @@ public class template extends JFrame{ //creates a JFrame window
                             
 
                             myWriter.write(i + "\n" + j + "\n" + k + "\n" + String.format("0x%04X", pci.vendorID(i,j,k)) + "\n" + String.format("0x%04X", pci.productID(i,j,k)) + "\n");
-
                         }
                     }
                 }
