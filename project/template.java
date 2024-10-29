@@ -254,7 +254,7 @@ public class template extends JFrame{ //creates a JFrame window
             //new device removed or added
             int count = 0;
 
-            if (usb.deviceCount() > 0){
+            if (usb.deviceCount() > count){
                 System.out.println("Device has been added"); 
             }else if (count == 0){ 
                 System.out.println("No device attached or device has been removed"); 
