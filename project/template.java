@@ -198,13 +198,6 @@ public class template extends JFrame{ //creates a JFrame window
 
                             myWriter.write(i + "\n" + j + "\n" + k + "\n" + String.format("0x%04X", pci.vendorID(i,j,k)) + "\n" + String.format("0x%04X", pci.productID(i,j,k)) + "\n");
 
-
-                        //updates panel
-                        panel.add(new JLabel("\nBus Id = " + busId + "\nDevice Id = " + deviceId + "\nVendor Id = " + vendorId + "\nProduct Id = " + productId + "\nFunction Number = " + functionNumber));
-                        panel.add(new JLabel("<html><br/>"));
-
-                        panel.revalidate(); // Refresh the layout
-                        panel.repaint(); // Refresh the drawing
                         }
                     }
                 }
@@ -255,16 +248,13 @@ public class template extends JFrame{ //creates a JFrame window
                 usb.deviceCount(i)+" devices"); //print how many USB devices are attatched to the USB bus
 
             //new device removed or added
-            int count >= 0;
-            count = usb.deviceCount();
+            int count = 0;
 
-            if (count++){
+            if (usb.deviceCount() > 0){
                 System.out.println("Device has been added"); 
-            }else if (count--){ 
-                System.out.println("Device has been removed"); 
-            }else{ 
-                System.out.println(""); 
-            } 
+            }else if (count == 0){ 
+                System.out.println("No device attached or device has been removed"); 
+            }
 
                 // Iterate through all of the USB devices on the USB bus
                 for (int j = 1; j <= usb.deviceCount(i); j++) {
