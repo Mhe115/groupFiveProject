@@ -447,6 +447,37 @@ public class template extends JFrame{ //creates a JFrame window
         panel.repaint(); // Refresh the drawing
     }
 
+    public static int lastJ = 9999;
+    public static void scanUSB() {
+        usbInfo usb = new usbInfo();
+        usb.read();
+        int j =0;
+
+        /*System.out.println("\nThis machine has "+
+            usb.busCount()+" USB buses ");*/
+        // Iterate through all of the USB buses
+        for (int i = 1; i <= usb.busCount(); i++) {
+            /*System.out.println("Bus "+i+" has "+
+                usb.deviceCount(i)+" devices");*/
+            // Iterate through all of the USB devices on the bus
+            for (j = 1; j <= usb.deviceCount(1); j++) {
+                /*System.out.println("Bus "+i+" device "+j+
+                    " has vendor "+String.format("0x%04X", usb.vendorID(i,j))+
+                    " and product "+String.format("0x%04X", usb.productID(i,j)));*/
+            }
+
+            //System.err.println(j);
+
+        }
+        if (j > lastJ){
+            System.err.println("USB PLUGGED IN!!!!!!!!!");
+        }
+
+        lastJ = j;
+
+    }
+
+
 //main method to run the GUI
     public static void main(String[] args){
         System.loadLibrary("sysinfo"); //loads system library
@@ -468,5 +499,9 @@ public class template extends JFrame{ //creates a JFrame window
             template ex = new template();
             ex.setVisible(true);
         });
+
+        while (true) { 
+            scanUSB();
+        }
     }
 }
