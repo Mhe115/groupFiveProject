@@ -43,6 +43,7 @@ public class template extends JFrame{ //creates a JFrame window
         setSize(400, 36); // Set window size
         setLocationRelativeTo(null); // Center the window on the screen
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Exits application when window is closed
+        setResizable(false);
         
         // Create a new JFrame and JPanel
         frame = new JFrame("Refresh JFrame Example"); // Creates a new frame object
@@ -230,7 +231,7 @@ public class template extends JFrame{ //creates a JFrame window
                 try {
             // Prepare the Maven command
             ProcessBuilder processBuilder = new ProcessBuilder(
-                "mvn", "exec:java", "-Dexec.mainClass=com.example.pciGraph");
+                "mvn","-q", "exec:java", "-Dexec.mainClass=com.example.pciGraph");
 
             // Redirect error stream to the same output stream
             processBuilder.redirectErrorStream(true);
@@ -298,7 +299,7 @@ public class template extends JFrame{ //creates a JFrame window
             try {
             // Prepare the Maven command
             ProcessBuilder processBuilder = new ProcessBuilder(
-                "mvn", "exec:java", "-Dexec.mainClass=com.example.usbGraph");
+                "mvn", "-q", "exec:java", "-Dexec.mainClass=com.example.usbGraph");
 
             // CHATGPT WROTE THIS TO FIX AN ERROR WITH ERROR STREAM
             processBuilder.redirectErrorStream(true);
@@ -389,7 +390,7 @@ public class template extends JFrame{ //creates a JFrame window
             try {
                 // Prepare the Maven command
                 ProcessBuilder processBuilder = new ProcessBuilder(
-                    "mvn", "exec:java", "-Dexec.mainClass=com.example.cpuGraph");
+                    "mvn","-q", "exec:java", "-Dexec.mainClass=com.example.cpuGraph");
 
                 // CHATGPT WROTE THIS TO FIX AN ERROR WITH ERROR STREAM
                 processBuilder.redirectErrorStream(true);
