@@ -49,7 +49,7 @@ public class template extends JFrame{ //creates a JFrame window
         panel = new JPanel(); // Creates a new panel for GUI components
         
         // Set a background color for the JPanel (e.g., light blue)
-        panel.setBackground(Color.CYAN); // You can change Color.CYAN to any other color
+        panel.setBackground(Color.BLACK); // You can change Color.CYAN to any other color
         
         // Add the panel to the content pane of the frame
         getContentPane().add(panel);
@@ -69,8 +69,9 @@ public class template extends JFrame{ //creates a JFrame window
         
         panel.add(new JLabel("Select Data Type")); //user prompt to "Select Data Type"
 
-        
-
+        panel.add(new JLabel("Select Data Type")); //user prompt to "Select Data Type" 
+        JLabel.setFont(newFont("Arial", Font.BOLD, 12)); 
+        JLabel.setForeground(Color.Green); 
         
 
         JButton cpubut = new JButton("CPU"); //new button for CPU
@@ -93,6 +94,10 @@ public class template extends JFrame{ //creates a JFrame window
 
         membut.addActionListener(new memPick()); //checks for MEM button being pressed
 
+  
+        JButton.setBackground(Color.BLACK); 
+        JButton.setFont(newFont("Arial", Font.BOLD, 12)); 
+        JButton.setForeground(Color.Green); 
 
     }
 
