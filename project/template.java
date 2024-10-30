@@ -98,7 +98,7 @@ public class template extends JFrame{ //creates a JFrame window
             
             System.out.println("\nCPU Selected"); //print "CPU selected" when CPU is selected
             showCPU(); //call showCPU method
-            // Create a new JFrame and JPanel
+            
         }
     }
 
@@ -109,17 +109,29 @@ public class template extends JFrame{ //creates a JFrame window
         public void actionPerformed(ActionEvent e) {
             
             System.out.println("\nPCI Selected"); //print "PCI selected" when PCI is selected
-            JFrame pciFrame = new JFrame("PCI Frame"); // Creates a new frame object
-            JPanel pciPanel = new JPanel(); // Creates a new panel for GUI components
-            // Set a background color for the JPanel (e.g., light blue)
-            panel.setBackground(Color.PINK); // You can change Color.CYAN to any other color
-            // Add the panel to the content pane of the frame
-            getContentPane().add(panel);
-            // Calls createScreenCont()
-            createScreenCont();
-            // Make sure the frame is visible
-            setVisible(true);
             
+             // Set up the JFrame window
+        setTitle("System Information"); // Set window title
+        setSize(400, 36); // Set window size
+        setLocationRelativeTo(null); // Center the window on the screen
+        setDefaultCloseOperation(EXIT_ON_CLOSE); // Exits application when window is closed
+        
+        // Create a new JFrame and JPanel
+        JFrame pciFrame = new JFrame(""); // Creates a new frame object
+        JPanel pciPanel = new JPanel(); // Creates a new panel for GUI components
+        
+        // Set a background color for the JPanel (e.g., light blue)
+        panel.setBackground(Color.PINK); // You can change Color.CYAN to any other color
+        
+        // Add the panel to the content pane of the frame
+        getContentPane().add(panel);
+        
+        // Calls createScreenCont()
+        createScreenCont();
+        
+        // Make sure the frame is visible
+        setVisible(true);
+
             showPCI(); //call showPCI method
         }
     }
