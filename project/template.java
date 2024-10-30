@@ -429,6 +429,7 @@ public class template extends JFrame{ //creates a JFrame window
         panel.repaint(); // Refresh the drawing
     }
 
+    
         //telling when a usb is plugged in
     public static int lastJ = 9999;
     public static void scanUSB() {
@@ -436,20 +437,9 @@ public class template extends JFrame{ //creates a JFrame window
         usb.read();
         int j =0;
 
-        /*System.out.println("\nThis machine has "+
-            usb.busCount()+" USB buses ");*/
-        // Iterate through all of the USB buses
-        for (int i = 1; i <= usb.busCount(); i++) {
-            /*System.out.println("Bus "+i+" has "+
-                usb.deviceCount(i)+" devices");*/
-            // Iterate through all of the USB devices on the bus
-            for (j = 1; j <= usb.deviceCount(1); j++) {
-                /*System.out.println("Bus "+i+" device "+j+
-                    " has vendor "+String.format("0x%04X", usb.vendorID(i,j))+
-                    " and product "+String.format("0x%04X", usb.productID(i,j)));*/
-            }
 
-            //System.err.println(j);
+        // Checks how many devices on bus 1
+        for (j = 1; j <= usb.deviceCount(1); j++) {
 
         }
         if (j > lastJ){
