@@ -234,7 +234,7 @@ public class template extends JFrame{ //creates a JFrame window
     }
 
     //method to display USB Info
-    public static void showUSB(){
+    public void showUSB(){
         usbInfo usb = new usbInfo(); //creates a new instance of usbInfo
         usb.read(); //reads computer's USB infp
         System.out.println("\nThis machine has "+
@@ -244,6 +244,15 @@ public class template extends JFrame{ //creates a JFrame window
         for (int i = 1; i <= usb.busCount(); i++) {
             System.out.println("Bus "+i+" has "+
                 usb.deviceCount(i)+" devices"); //print how many USB devices are attatched to the USB bus
+
+
+                //updates panel
+                panel.add(new JLabel("\nThis machine has "+ usb.busCount()+" USB buses "));
+                panel.add(new JLabel("\nBus " +i+ " has " + usb.deviceCount(i)+ " devices"));
+                panel.add(new JLabel("<html><br/>"));
+
+                panel.revalidate(); // Refresh the layout
+                panel.repaint();
 
             //new device removed or added
             int count = 0;
