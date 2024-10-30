@@ -65,13 +65,8 @@ public class template extends JFrame{ //creates a JFrame window
     //method to add components to the screen
     public void createScreenCont() { 
 
+        panel.add(new JLabel("Select Data Type")); //user prompt to "Select Data Type"
 
-        JLabel label = new JLabel("Select Data Type: ");
-        JLabel.setFont(newFont("Arial", Font.BOLD, 12)); 
-        JLabel.setForeground(Color.GREEN); 
-        panel.add(label); //user prompt to "Select Data Type"
-        
-        
 
         JButton cpubut = new JButton("CPU"); //new button for CPU
         panel.add(cpubut); //adds this CPU button to the panel
@@ -92,11 +87,6 @@ public class template extends JFrame{ //creates a JFrame window
         panel.add(membut); //adds this MEM button to the panel
 
         membut.addActionListener(new memPick()); //checks for MEM button being pressed
-
-  
-        JButton.setBackground(Color.BLACK); 
-        JButton.setFont(newFont("Arial", Font.BOLD, 12)); 
-        JButton.setForeground(Color.Green); 
 
     }
 
