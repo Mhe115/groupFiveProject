@@ -1,4 +1,5 @@
-
+import java.awt.*;
+import javax.swing.*;
 //classes for buttons to call methods to display dialog boxes 
 
 public class memBox{
