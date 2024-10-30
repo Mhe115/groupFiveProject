@@ -18,8 +18,6 @@ public class pciBox{
             pciDialog.setSize(400, 200); // Set window size
             pciDialog.setLocationRelativeTo(null); // Center the window on the screen
           
-            JOptionPane.showMessageDialog("Hello World", "Test", ...);
-
             pciDialog.setVisible(true);
             
     }
