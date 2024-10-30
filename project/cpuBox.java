@@ -13,8 +13,8 @@ public class cpuBox{
     
     public void initiliaseCpu(){
             cpuDialog.setBackground(Color.WHITE); 
-            cpuDialog.setTitle("System Information"); // Set window title
-            cpuDialog.setSize(400, 36); // Set window size
+            cpuDialog.setTitle("CPU"); // Set window title
+            cpuDialog.setSize(400, 200); // Set window size
             cpuDialog.setLocationRelativeTo(null); // Center the window on the screen
           
             cpuDialog.setVisible(true);

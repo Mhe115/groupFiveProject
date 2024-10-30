@@ -13,8 +13,8 @@ public class usbBox{
     
     public void initiliaseUsb(){
             usbDialog.setBackground(Color.WHITE); 
-            usbDialog.setTitle("System Information"); // Set window title
-            usbDialog.setSize(400, 36); // Set window size
+            usbDialog.setTitle("USB"); // Set window title
+            usbDialog.setSize(400, 200); // Set window size
             usbDialog.setLocationRelativeTo(null); // Center the window on the screen
         
             usbDialog.setVisible(true);
