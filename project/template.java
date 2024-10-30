@@ -109,6 +109,17 @@ public class template extends JFrame{ //creates a JFrame window
         public void actionPerformed(ActionEvent e) {
             
             System.out.println("\nPCI Selected"); //print "PCI selected" when PCI is selected
+            JFrame pciFrame = new JFrame("PCI Frame"); // Creates a new frame object
+            JPanel pciPanel = new JPanel(); // Creates a new panel for GUI components
+            // Set a background color for the JPanel (e.g., light blue)
+            panel.setBackground(Color.PINK); // You can change Color.CYAN to any other color
+            // Add the panel to the content pane of the frame
+            getContentPane().add(panel);
+            // Calls createScreenCont()
+            createScreenCont();
+            // Make sure the frame is visible
+            setVisible(true);
+            
             showPCI(); //call showPCI method
         }
     }
@@ -142,17 +153,6 @@ public class template extends JFrame{ //creates a JFrame window
 //Getting the PCI,CPU,USB and MEM Info - Mark Burkley's
     //method to display PCI Info
     public void showPCI(){ try{
-        JFrame pciFrame = new JFrame("PCI Frame"); // Creates a new frame object
-        JPanel pciPanel = new JPanel(); // Creates a new panel for GUI components
-        // Set a background color for the JPanel (e.g., light blue)
-        panel.setBackground(Color.PINK); // You can change Color.CYAN to any other color
-        // Add the panel to the content pane of the frame
-        getContentPane().add(panel);
-        // Calls createScreenCont()
-        createScreenCont();
-        // Make sure the frame is visible
-        setVisible(true);
-        
         pciInfo pci = new pciInfo(); //creates a new instance of pciInfo
         pci.read(); //reads computer's PCI info
 
