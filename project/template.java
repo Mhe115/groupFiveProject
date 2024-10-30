@@ -98,6 +98,7 @@ public class template extends JFrame{ //creates a JFrame window
             
             System.out.println("\nCPU Selected"); //print "CPU selected" when CPU is selected
             showCPU(); //call showCPU method
+            JFrame cpuFrame = new JFrame("CPU Frame");
         }
     }
 
@@ -109,6 +110,7 @@ public class template extends JFrame{ //creates a JFrame window
             
             System.out.println("\nPCI Selected"); //print "PCI selected" when PCI is selected
             showPCI(); //call showPCI method
+            JFrame pciFrame = new JFrame("PCI Frame");
         }
     }
 
@@ -120,6 +122,7 @@ public class template extends JFrame{ //creates a JFrame window
             
             System.out.println("\nUSB Selected"); //print "USB selected" when USB is selected
             showUSB(); //call showUSB method
+            JFrame usbFrame = new JFrame("USB Frame");
         }
     }
 
@@ -131,6 +134,7 @@ public class template extends JFrame{ //creates a JFrame window
             
             System.out.println("\nMEM Selected"); //print "MEM selected" when MEM is selected
             showMEM(); //call showMEM method
+            JFrame memFrame = new JFrame("MEM Frame");
         }
     }
 
