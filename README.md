@@ -1,10 +1,5 @@
 # Group Five Project
 
-Updated to Mark's Final Library #3
+To execute run "run.sh", if the machine has less than 1G of ram avanible then you may need to ajust or remove the ram allocation in the run.sh file. 
 
-Maven integration so graphs, we need to get more data on the final GUIs
-
-
-V 0.4
-
-An attempt to edit. - Caitlin
+V 1.0
