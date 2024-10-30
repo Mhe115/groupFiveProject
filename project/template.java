@@ -49,7 +49,7 @@ public class template extends JFrame{ //creates a JFrame window
         panel = new JPanel(); // Creates a new panel for GUI components
         
         // Set a background color for the JPanel (e.g., light blue)
-        panel.setBackground(Color.BLACK); // You can change Color.CYAN to any other color
+        panel.setBackground(Color.MAGENTA); // You can change Color.CYAN to any other color
         
         // Add the panel to the content pane of the frame
         getContentPane().add(panel);
