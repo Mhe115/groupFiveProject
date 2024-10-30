@@ -413,10 +413,10 @@ public class template extends JFrame{ //creates a JFrame window
         double memory = Runtime.getRuntime().totalMemory() / 1000000;
 
         System.out.println("\nTotal memory available to JVM (Megabytes): " + memory ); //prints available memory
-        System.out.println("\nOS: \t\t\t" + System.getProperty(nameOS)); //prints OS name
+        System.out.println("OS: \t\t\t" + System.getProperty(nameOS)); //prints OS name
         System.out.println("OS Version: \t\t" + System.getProperty(versionOS)); //prints OS version
         System.out.println("OS Architecture: \t" + System.getProperty(architectureOS)); //prints OS architecture
-        System.out.println();
+ //       System.out.println();
         System.out.println("CPU Memory info"); //prints header for CPU memory info      
         System.out.println("l1d="+cpu.l1dCacheSize()+ ", l1i="+cpu.l1iCacheSize()+ ", l2="+cpu.l2CacheSize()+ ", l3="+cpu.l3CacheSize()); //prints CPU cache info
 
