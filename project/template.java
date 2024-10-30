@@ -40,7 +40,7 @@ public class template extends JFrame{ //creates a JFrame window
    public template() {
         // Set up the JFrame window
         setTitle("System Information"); // Set window title
-        setSize(400, 200); // Set window size
+        setSize(400, 36); // Set window size
         setLocationRelativeTo(null); // Center the window on the screen
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Exits application when window is closed
         
@@ -49,7 +49,7 @@ public class template extends JFrame{ //creates a JFrame window
         panel = new JPanel(); // Creates a new panel for GUI components
         
         // Set a background color for the JPanel (e.g., light blue)
-        panel.setBackground(Color.MAGENTA); // You can change Color.CYAN to any other color
+        panel.setBackground(Color.PINK); // You can change Color.CYAN to any other color
         
         // Add the panel to the content pane of the frame
         getContentPane().add(panel);
