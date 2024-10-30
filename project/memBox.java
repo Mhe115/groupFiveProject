@@ -1,13 +1,13 @@
 
 //classes for buttons to call methods to display dialog boxes 
 
-public class memBox(){
+public class memBox{
+
+    JDialog memDialog = new JDialog();
 
     public memBox(){
-        JDialog memDialog = new JDialog();
-    
         initiliaseMem();
-        
+        }
         
         public void initiliaseMem(){
                 memDialog.setBackground(Color.WHITE); 
@@ -20,4 +20,4 @@ public class memBox(){
                 
     }
     }
-    }
+    

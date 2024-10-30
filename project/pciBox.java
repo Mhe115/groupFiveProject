@@ -2,14 +2,14 @@
 //classes for buttons to call methods to display dialog boxes 
 
 
-public class pciBox(){
+public class pciBox{
 
 
     private final JDialog pciDialog = new JDialog();
     
     public pciBox(){
     initiliasePci();
-    
+    }
     
     public void initiliasePci(){
             pciDialog.setBackground(Color.WHITE); 
@@ -22,5 +22,5 @@ public class pciBox(){
             
     }
     }
-    }
+    
     

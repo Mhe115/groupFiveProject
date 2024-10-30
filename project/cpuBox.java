@@ -2,14 +2,13 @@
 //classes for buttons to call methods to display dialog boxes 
 
 
-public class cpuBox(){
+public class cpuBox{
 
+    JDialog cpuDialog = new JDialog();
 
     public cpuBox(){
-        JDialog cpuDialog = new JDialog();
-    
     initiliaseCpu();
-    
+    }
     
     public void initiliaseCpu(){
             cpuDialog.setBackground(Color.WHITE); 
@@ -22,4 +21,4 @@ public class cpuBox(){
             
     }
     }
-    }
+    

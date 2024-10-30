@@ -2,13 +2,13 @@
 //classes for buttons to call methods to display dialog boxes 
 
 
-public class usbBox(){
+public class usbBox{
+
+    JDialog usbDialog = new JDialog();
 
     public usbBox(){
-        JDialog usbDialog = new JDialog();
-    
     initiliaseUsb();
-    
+    }
     
     public void initiliaseUsb(){
             usbDialog.setBackground(Color.WHITE); 
@@ -21,4 +21,4 @@ public class usbBox(){
             
     }
     }
-    }
+    
