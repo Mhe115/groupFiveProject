@@ -15,9 +15,8 @@ public class memBox{
                 memDialog.setTitle("Memory"); // Set window title
                 memDialog.setSize(400, 200); // Set window size
                 memDialog.setLocationRelativeTo(null); // Center the window on the screen
-        
+
                 memDialog.setVisible(true);
                 
     }
     }
-    

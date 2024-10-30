@@ -96,8 +96,8 @@ public class template extends JFrame{ //creates a JFrame window
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            cpuBox cpuWindow = new cpuBox();
-            cpuWindow.initiliaseCpu();
+            //cpuBox cpuWindow = new cpuBox();
+            //cpuWindow.initiliaseCpu();
             System.out.println("\nCPU Selected"); //print "CPU selected" when CPU is selected
             showCPU(); //call showCPU method
             
@@ -109,8 +109,8 @@ public class template extends JFrame{ //creates a JFrame window
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            pciBox pciWindow = new pciBox();
-            pciWindow.initiliasePci();
+            //pciBox pciWindow = new pciBox();
+            //pciWindow.initiliasePci();
             System.out.println("\nPCI Selected"); //print "PCI selected" when PCI is selected
             showPCI(); //call showPCI method
         }
@@ -121,8 +121,8 @@ public class template extends JFrame{ //creates a JFrame window
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            usbBox usbWindow = new usbBox();
-            usbWindow.initiliaseUsb();
+            //usbBox usbWindow = new usbBox();
+            //usbWindow.initiliaseUsb();
             System.out.println("\nUSB Selected"); //print "USB selected" when USB is selected
             showUSB(); //call showUSB method
         }
@@ -133,8 +133,8 @@ public class template extends JFrame{ //creates a JFrame window
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            memBox memWindow = new memBox();   
-            memWindow.initiliaseMem();         
+            //memBox memWindow = new memBox();   
+            //memWindow.initiliaseMem();         
             System.out.println("\nMEM Selected"); //print "MEM selected" when MEM is selected
             showMEM(); //call showMEM method
         }
