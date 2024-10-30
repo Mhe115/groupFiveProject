@@ -98,7 +98,7 @@ public class template extends JFrame{ //creates a JFrame window
         public void actionPerformed(ActionEvent e) {
             //cpuBox cpuWindow = new cpuBox();
             //cpuWindow.initiliaseCpu();
-            System.out.println("\nCPU Selected"); //print "CPU selected" when CPU is selected
+            System.out.println("\nCPU Selected\n"); //print "CPU selected" when CPU is selected
             showCPU(); //call showCPU method
             
         }
