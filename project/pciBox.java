@@ -17,9 +17,9 @@ public class pciBox{
             pciDialog.setTitle("System Information"); // Set window title
             pciDialog.setSize(400, 36); // Set window size
             pciDialog.setLocationRelativeTo(null); // Center the window on the screen
-            pciDialog.setDefaultCloseOperation(EXIT_ON_CLOSE); // Exits application when window is closed
+            pciDialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // Exits application when window is closed
     
-            setVisible(true);
+            pciDialog.setVisible(true);
             
     }
     }

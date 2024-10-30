@@ -16,9 +16,9 @@ public class cpuBox{
             cpuDialog.setTitle("System Information"); // Set window title
             cpuDialog.setSize(400, 36); // Set window size
             cpuDialog.setLocationRelativeTo(null); // Center the window on the screen
-            cpuDialog.setDefaultCloseOperation(EXIT_ON_CLOSE); // Exits application when window is closed
+            cpuDialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // Exits application when window is closed
     
-            setVisible(true);
+            cpuDialog.setVisible(true);
             
     }
     }
