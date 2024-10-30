@@ -146,7 +146,7 @@ public class template extends JFrame{ //creates a JFrame window
 
 //Getting the PCI,CPU,USB and MEM Info - Mark Burkley's
     //method to display PCI Info
-    public static void showPCI(){ try{
+    public void showPCI(){ try{
         pciInfo pci = new pciInfo(); //creates a new instance of pciInfor
         pci.read(); //reads computer's PCI info
 
@@ -254,7 +254,7 @@ public class template extends JFrame{ //creates a JFrame window
             //new device removed or added
             int count = 0;
 
-            if (usb.deviceCount() > count){
+            /*if (usb.deviceCount() > count){
                 System.out.println("Device has been added"); 
             }else if (count == 0){ 
                 System.out.println("No device attached or device has been removed"); 
@@ -265,13 +265,13 @@ public class template extends JFrame{ //creates a JFrame window
                     System.out.println("Bus "+i+" device "+j+
                         " has vendor "+String.format("0x%04X", usb.vendorID(i,j))+
                         " and product "+String.format("0x%04X", usb.productID(i,j))); //print vendor and product IDs for each USB device
-            }
+            }*/
         }
 
             try {
             // Prepare the Maven command
             ProcessBuilder processBuilder = new ProcessBuilder(
-                "mvn", "exec:java", "-Dexec.mainClass=com.example.cpuGraph");
+                "mvn", "exec:java", "-Dexec.mainClass=com.example.usbGraph");
 
             // CHATGPT WROTE THIS TO FIX AN ERROR WITH ERROR STREAM
             processBuilder.redirectErrorStream(true);
