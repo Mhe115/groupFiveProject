@@ -1,29 +1,23 @@
 package com.example;
 
 //Importing the nessesary iteams to conver a cvs file to a data base so we can use SQL commands on it
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import java.io.File; // Import the File class
-import java.io.FileNotFoundException; // Import this class to handle errors
+import java.sql.SQLException; // Import the File class
+import java.sql.Statement; // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
-
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PiePlot;
-import org.jfree.data.general.DefaultPieDataset;
-
-import javax.swing.*;
-import java.awt.*;
 
 
 
 public class pciGraph {
+
+    
+
+
 
     public static void main(String[] args) {
         

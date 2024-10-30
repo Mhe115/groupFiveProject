@@ -210,7 +210,7 @@ public class template extends JFrame{ //creates a JFrame window
         myWriter.close();
         System.out.println("Successfully wrote to pci.txt.");
                 try {
-            // Prepare the Maven command
+            //Maven command
             ProcessBuilder processBuilder = new ProcessBuilder(
                 "mvn","-q", "exec:java", "-Dexec.mainClass=com.example.pciGraph");
 
@@ -265,7 +265,7 @@ public class template extends JFrame{ //creates a JFrame window
 
             /*if (usb.deviceCount() > count){
                 System.out.println("Device has been added"); 
-            }else if (count == 0){ 
+            }else if (usb.deviceCount() == 0){ 
                 System.out.println("No device attached or device has been removed"); 
             }
 
@@ -409,7 +409,7 @@ public class template extends JFrame{ //creates a JFrame window
         String versionOS = "os.version";  
         String architectureOS = "os.arch";
 
-        //calculates memory available
+        //calculates memory available converting byts to meaga byts
         double memory = Runtime.getRuntime().totalMemory() / 1000000;
 
         System.out.println("\nTotal memory available to JVM (Megabytes): " + memory ); //prints available memory
@@ -429,6 +429,7 @@ public class template extends JFrame{ //creates a JFrame window
         panel.repaint(); // Refresh the drawing
     }
 
+        //telling when a usb is plugged in
     public static int lastJ = 9999;
     public static void scanUSB() {
         usbInfo usb = new usbInfo();
@@ -452,7 +453,7 @@ public class template extends JFrame{ //creates a JFrame window
 
         }
         if (j > lastJ){
-            System.err.println("USB PLUGGED IN!!!!!!!!!");
+            System.err.println("New device attached!");
         }
 
         lastJ = j;
@@ -463,7 +464,7 @@ public class template extends JFrame{ //creates a JFrame window
 //main method to run the GUI
     public static void main(String[] args){
         System.loadLibrary("sysinfo"); //loads system library
-        sysInfo info = new sysInfo(); //creates a new instance of sysInfo
+        sysInfo info = new sysInfo(); //creates a new instance of sysInfo -Mark's
 
         
         
@@ -482,6 +483,7 @@ public class template extends JFrame{ //creates a JFrame window
             ex.setVisible(true);
         });
 
+        //Constantly scanning for USBs
         while (true) { 
             scanUSB();
         }

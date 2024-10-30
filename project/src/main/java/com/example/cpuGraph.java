@@ -1,17 +1,20 @@
 package com.example;
 
-import java.io.File;  // Import the File class
-import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.util.Scanner; // Import the Scanner class to read text files
+import java.awt.Color;  // Import the File class
+import java.awt.Dimension;  // Import this class to handle errors
+import java.io.File; // Import the Scanner class to read text files
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
-
-import javax.swing.*;
-import java.awt.*;
 
 public class cpuGraph extends JFrame{
   public static void main(String[] args) {
@@ -36,7 +39,7 @@ public class cpuGraph extends JFrame{
         //System.out.println("PCIvendorID: " + PCIvendorID + ", PCIproductID: " + PCIproductID);
         //System.out.println("--------------");
 
-        System.out.println(model + socketCount + coresPerSocket + l1dCacheSize + l1iCacheSize + l2CacheSize + l3CacheSize);
+        //System.out.println(model + socketCount + coresPerSocket + l1dCacheSize + l1iCacheSize + l2CacheSize + l3CacheSize);
       
       }
       myReader.close();
@@ -108,7 +111,7 @@ public class cpuGraph extends JFrame{
             //Prints the values to console
 
 
-            System.out.println(model + socketCount + coresPerSocket + l1dCacheSize + l1iCacheSize + l2CacheSize + l3CacheSize);
+            //System.out.println(model + socketCount + coresPerSocket + l1dCacheSize + l1iCacheSize + l2CacheSize + l3CacheSize);
 
           }
           myReader.close();
