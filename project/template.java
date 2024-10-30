@@ -66,12 +66,11 @@ public class template extends JFrame{ //creates a JFrame window
     public void createScreenCont() { 
 
 
-        
-        panel.add(new JLabel("Select Data Type")); //user prompt to "Select Data Type"
-
-        panel.add(new JLabel("Select Data Type")); //user prompt to "Select Data Type" 
+        JLabel label = new JLabel("Select Data Type: ");
         JLabel.setFont(newFont("Arial", Font.BOLD, 12)); 
-        JLabel.setForeground(Color.Green); 
+        JLabel.setForeground(Color.GREEN); 
+        panel.add(label); //user prompt to "Select Data Type"
+        
         
 
         JButton cpubut = new JButton("CPU"); //new button for CPU
